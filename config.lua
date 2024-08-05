@@ -1,7 +1,7 @@
 Config = {}
 
 -- Your discord webhook, for the delivery logs.
-Config.Webhook = ""
+Config.Webhook = "https://discord.com/api/webhooks/1233569487039496235/OOqCOpIodCEcBBsqdXOqP7lwJPMiKBUtwx__VGHmZOBFXfE5VY_RNJNu8LS7vIF4Mtc-"
 
 -- The amount the player will get after delivering all the packages.
 Config.PayMoney = 2000
@@ -19,11 +19,11 @@ Config.Blips = {
 
     -- The blip that will show where the quest ped is.
     showBlip = true,
-    name = "Help Karen"
+    name = "Help Karen",
     type = 280,
     scale = 1.0,
     color = 5,
-    coords = {x = 970.9639, y = -2405.5630, z = 31.4937}
+    coords = {x = 970.9639, y = -2405.5630, z = 31.4937},
 
     -- All the other blips for where to deliver the packages.
     deliverPackageBlipName = "Deliver here!",
@@ -52,13 +52,13 @@ Config.Peds = {
     deliverPedModelOne = "a_f_m_tramp_01",
 
     -- The second ped to deliver the package to.
-    deliverPedCoordsTwo = {x = 844.5034, y = -2118.2617, z = 30.5211}
-    deliverPedHeadingTwo = 88.8697
-    deliverPedModelTwo = "a_m_m_genfat_02"
+    deliverPedCoordsTwo = {x = 844.5034, y = -2118.2617, z = 30.5211},
+    deliverPedHeadingTwo = 88.8697,
+    deliverPedModelTwo = "a_m_m_genfat_02",
 
     -- The thrid ped to deliver the package to.
-    deliverPedCoordsThree = {x = 1092.7313, y = -2252.0068, z = 31.2339}
-    deliverPedHeadingThree = 265.9628
+    deliverPedCoordsThree = {x = 1092.7313, y = -2252.0068, z = 31.2339},
+    deliverPedHeadingThree = 265.9628,
     deliverPedModelThree = "a_m_m_soucent_03"
 
 }
@@ -68,9 +68,9 @@ Config.Peds = {
 Config.Car = {
 
     -- The quest car
-    questCarCoords = {x = 983.1087, y = -2410.2227, z = 30.4503}
-    questCarHeading = 352.9906
-    questCarModel = "burrito3"
+    questCarCoords = {x = 983.1087, y = -2410.2227, z = 30.4503},
+    questCarHeading = 352.9906,
+    questCarModel = "burrito3",
 
 }
 

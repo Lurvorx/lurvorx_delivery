@@ -15,4 +15,4 @@ Watch it here: [Preview - COMING SOON!]()
 - ESX Legacy
 - More frameworks are coming soon.
 
-**Well, I hope you liked it.**
+**Well, I hope you liked it. Please make a review on it if you liked it or hated it in our discord :))**

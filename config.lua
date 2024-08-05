@@ -1,7 +1,7 @@
 Config = {}
 
 -- Your discord webhook, for the delivery logs.
-Config.Webhook = "https://discord.com/api/webhooks/1233569487039496235/OOqCOpIodCEcBBsqdXOqP7lwJPMiKBUtwx__VGHmZOBFXfE5VY_RNJNu8LS7vIF4Mtc-"
+Config.Webhook = ""
 
 -- The amount the player will get after delivering all the packages.
 Config.PayMoney = 2000
@@ -10,9 +10,11 @@ Config.PayMoney = 2000
 Config.NotificationTime = 8
 
 -- The keybind the players are gonna use to interact with the peds.
+-- Find information about controls here: https://docs.fivem.net/docs/game-references/controls/
 Config.Keybind = 38
 
 -- Config all of the blips under.
+-- Find information about blips here: https://docs.fivem.net/docs/game-references/blips/
 Config.Blips = {
 
     -- The blip that will show where the quest ped is.
@@ -36,6 +38,7 @@ Config.Blips = {
 }
 
 -- Config all of the peds under.
+-- Find information about peds here: https://docs.fivem.net/docs/game-references/ped-models/
 Config.Peds = {
 
     -- The ped to interact with to start the delivery quest.
@@ -61,6 +64,7 @@ Config.Peds = {
 }
 
 -- Config the car that the players are gonna use to deliver the packages under.
+-- Find information about cars here: https://docs.fivem.net/docs/game-references/vehicle-models/
 Config.Car = {
 
     -- The quest car

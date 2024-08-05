@@ -12,7 +12,7 @@ Citizen.CreateThread(function()
     local deliverPedHeadingOne = Config.Peds.deliverPedHeadingOne
     local deliverPedModelOne = GetHashKey(Config.Peds.deliverPedModelOne)
 
-    local deliverPedCoordsTwo = Config.Peds.eliverPedCoordsTwo
+    local deliverPedCoordsTwo = Config.Peds.deliverPedCoordsTwo
     local deliverPedHeadingTwo = Config.Peds.deliverPedHeadingTwo
     local deliverPedModelTwo = GetHashKey(Config.Peds.deliverPedModelTwo)
 
@@ -34,7 +34,7 @@ Citizen.CreateThread(function()
     local hasDeliverPackageTwo = false
     local hasDeliverPackageThree = false
 
-    if Config.Blip.showBlip then
+    if Config.Blips.showBlip then
         blip = nil
         blip = AddBlipForCoord(blipQuestCoords.x, blipQuestCoords.y, blipQuestCoords.z)
     

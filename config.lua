@@ -1,7 +1,7 @@
 Config = {}
 
 -- Your discord webhook, for the delivery logs.
-Config.Webhook = "https://discord.com/api/webhooks/1233569487039496235/OOqCOpIodCEcBBsqdXOqP7lwJPMiKBUtwx__VGHmZOBFXfE5VY_RNJNu8LS7vIF4Mtc-"
+Config.Webhook = ""
 
 -- The amount the player will get after delivering all the packages.
 Config.PayMoney = 2000

@@ -5,7 +5,7 @@ SendToDiscord = function(playerName, discordMessage)
     local embeds = {
         {
             ['type'] = 'rich',
-            ['title'] = 'DELIVERY LOGS',
+            ['title'] = '`📦` DELIVERY LOGS',
             ['description'] = discordMessage,
             ['color'] = 10092339,
             ['footer'] = {
@@ -26,12 +26,27 @@ AddEventHandler("lurvorx_delivery:getMoney", function()
 
     xPlayer.addMoney(Config.PayMoney)
 
-    local discordid = string.gsub(GetPlayerIdentifier(_source, 1), "discord:", "") or "N/A"
-    local fivem = GetPlayerIdentifier(_source, 2) or "N/A"
-    local license = GetPlayerIdentifier(_source) or "N/A"
-    local license2 = GetPlayerIdentifier(_source, 3) or "N/A"
+    for k,v in pairs(GetPlayerIdentifiers(source)) do
+        if string.sub(v, 1, string.len("steam:")) == "steam:" then
+            steamid = v
+        elseif string.sub(v, 1, string.len("license:")) == "license:" then
+            license = v
+        elseif string.sub(v, 1, string.len("license2:")) == "license2:" then
+            license2 = v
+        elseif string.sub(v, 1, string.len("fivem:")) == "fivem:" then
+            fivem = v
+        elseif string.sub(v, 1, string.len("discord:")) == "discord:" then
+            discord = v
+        end
+    end
+
+    steamhex = steamid or "N/A"
+    fivemlicense = license or "N/A"
+    fivemlicense2 = license2 or "N/A"
+    fivemid = fivem or "N/A"
+    discordid = string.gsub(discord, "discord:", "") or "N/A"
 
     SendToDiscord(
-        discordMessage, "**" .. playerName .. "** have delivered **3** packages." .. "\n\n`👤` **PLAYER:** `" .. playerName .. "`\n`🔢` **SERVER ID:** `" .. _source .. "`\n`💬` **DISCORD:** " .. "<@" .. discordid .. "> [||" .. discordid .. "||]" .. "\n`🎮` **FIVEM:** ||" .. fivem .. "||\n`💿` **LICENSE:** ||" .. license .. "||\n`📀` **LICENSE 2:** ||" .. license2 .. "||"
+        discordMessage, "**" .. playerName .. "** have delivered **3** packages." .. "\n\n`👤` **PLAYER:** `" .. playerName .. "`\n`🔢` **SERVER ID:** `" .. source .. "`\n`💬` **DISCORD:** " .. "<@" .. discordid .. "> [||" .. discordid .. "||]" .. "\n`🎮` **STEAM HEX:** ||" .. steamhex .. "||\n`🎮` **FIVEM:** ||" .. fivemid .. "||\n`💿` **LICENSE:** ||" .. fivemlicense .. "||\n`📀` **LICENSE 2:** ||" .. fivemlicense2 .. "||"
     )
 end)

@@ -1,6 +1,10 @@
-ESX = nil
-ESX = exports["es_extended"]:getSharedObject()
+if Config.Framework == "esx" then
+    ESX = exports["es_extended"]:getSharedObject()
+elseif Config.Framework == "qb" then
+    QBCore = exports["qb-core"]:GetCoreObject()
+end
 
+-- CLIENT SIDE CODE --
 Citizen.CreateThread(function()
     local blipQuestCoords = Config.Blips.coords
 
@@ -67,10 +71,17 @@ Citizen.CreateThread(function()
     while true do
         while not inActiveQuest do
             if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), questPedCoords.x, questPedCoords.y, questPedCoords.z, true) < 1.5 then
-                ESX.ShowHelpNotification(Config.Strings.helpNotification.startQuest)
+                Draw3DText(questPedCoords.x, questPedCoords.y, questPedCoords.z, 0.5, Config.Strings.helpNotification.startQuest)
                 if IsControlJustPressed(0, Config.Keybind) then
-                    ESX.ShowNotification(Config.Strings.showNotification.startedQuest, "success", Config.NotificationTime * 1000)
+                    if Config.Framework == "esx" then
+                        ESX.ShowNotification(Config.Strings.showNotification.startedQuest, "success", Config.NotificationTime * 1000)
+                    elseif Config.Framework == "qb" then
+                        QBCore.Functions.Notify(Config.Strings.showNotification.startedQuest, "success", Config.NotificationTime * 1000)
+                    end
                     questCar = CreateVehicle(questCarModel, questCarCoords.x, questCarCoords.y, questCarCoords.z, questCarHeading, true, false)
+                    if Config.Framework == "qb" then
+                        TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(questCar))
+                    end
                     SetNewWaypoint(deliverPackageOne.x, deliverPackageOne.y)
                     inActiveQuest = true
                     hasDeliverPackageOne = false
@@ -79,7 +90,7 @@ Citizen.CreateThread(function()
                     hasDeliverAllPackages = false
                 end
             end
-            Citizen.Wait(10)
+            Citizen.Wait(0)
         end
 
         if inActiveQuest then
@@ -143,41 +154,53 @@ Citizen.CreateThread(function()
 
         while inActiveQuest and not hasDeliverPackageOne and not hasDeliverAllPackages do
             if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), questPedCoords.x, questPedCoords.y, questPedCoords.z, true) < 1.5 then
-                ESX.ShowHelpNotification(Config.Strings.helpNotification.deliverAll)
+                Draw3DText(questPedCoords.x, questPedCoords.y, questPedCoords.z, 0.5, Config.Strings.helpNotification.deliverAll)
             end
 
             if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), deliverPackageOne.x, deliverPackageOne.y, deliverPackageOne.z, true) < 1.5 then
-                ESX.ShowHelpNotification(Config.Strings.helpNotification.deliverPackage)
+                Draw3DText(deliverPackageOne.x, deliverPackageOne.y, deliverPackageOne.z, 0.5, Config.Strings.helpNotification.deliverPackage)
                 if IsControlJustPressed(0, Config.Keybind) then
-                    ESX.ShowNotification(Config.Strings.showNotification.deliveredPackage, "success", Config.NotificationTime * 1000)
+                    if Config.Framework == "esx" then
+                        ESX.ShowNotification(Config.Strings.showNotification.deliveredPackage, "success", Config.NotificationTime * 1000)
+                    elseif Config.Framework == "qb" then
+                        QBCore.Functions.Notify(Config.Strings.showNotification.deliveredPackage, "success", Config.NotificationTime * 1000)
+                    end
                     RemoveBlip(blipDeliveryPackageOne)
                     DeletePed(deliverPedOne)
                     SetNewWaypoint(deliverPackageTwo.x, deliverPackageTwo.y)
                     hasDeliverPackageOne = true
                 end
             end
-            Citizen.Wait(10)
+            Citizen.Wait(0)
         end
 
         while inActiveQuest and not hasDeliverPackageTwo do
             if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), deliverPackageTwo.x, deliverPackageTwo.y, deliverPackageTwo.z, true) < 1.5 then
-                ESX.ShowHelpNotification(Config.Strings.helpNotification.deliverPackage)
+                Draw3DText(deliverPackageTwo.x, deliverPackageTwo.y, deliverPackageTwo.z, 0.5, Config.Strings.helpNotification.deliverPackage)
                 if IsControlJustPressed(0, Config.Keybind) then
-                    ESX.ShowNotification(Config.Strings.showNotification.deliveredPackage, "success", Config.NotificationTime * 1000)
+                    if Config.Framework == "esx" then
+                        ESX.ShowNotification(Config.Strings.showNotification.deliveredPackage, "success", Config.NotificationTime * 1000)
+                    elseif Config.Framework == "qb" then
+                        QBCore.Functions.Notify(Config.Strings.showNotification.deliveredPackage, "success", Config.NotificationTime * 1000)
+                    end
                     RemoveBlip(blipDeliveryPackageTwo)
                     DeletePed(deliverPedTwo)
                     SetNewWaypoint(deliverPackageThree.x, deliverPackageThree.y)
                     hasDeliverPackageTwo = true
                 end
             end
-            Citizen.Wait(10)
+            Citizen.Wait(0)
         end
 
         while inActiveQuest and not hasDeliverPackageThree do
             if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), deliverPackageThree.x, deliverPackageThree.y, deliverPackageThree.z, true) < 1.5 then
-                ESX.ShowHelpNotification(Config.Strings.helpNotification.deliverPackage)
+                Draw3DText(deliverPackageThree.x, deliverPackageThree.y, deliverPackageThree.z, 0.5, Config.Strings.helpNotification.deliverPackage)
                 if IsControlJustPressed(0, Config.Keybind) then
-                    ESX.ShowNotification(Config.Strings.showNotification.driveBack, "success", Config.NotificationTime * 1000)
+                    if Config.Framework == "esx" then
+                        ESX.ShowNotification(Config.Strings.showNotification.driveBack, "success", Config.NotificationTime * 1000)
+                    elseif Config.Framework == "qb" then
+                        QBCore.Functions.Notify(Config.Strings.showNotification.driveBack, "success", Config.NotificationTime * 1000)
+                    end
                     RemoveBlip(blipDeliveryPackageThree)
                     DeletePed(deliverPedThree)
                     SetNewWaypoint(questPedCoords.x, questPedCoords.y)
@@ -185,21 +208,49 @@ Citizen.CreateThread(function()
                     hasDeliverAllPackages = true
                 end
             end
-            Citizen.Wait(10)
+            Citizen.Wait(0)
         end
 
         while inActiveQuest and hasDeliverAllPackages do
             if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), questPedCoords.x, questPedCoords.y, questPedCoords.z, true) < 1.5 then
-                ESX.ShowHelpNotification(Config.Strings.helpNotification.getMoney)
+                Draw3DText(questPedCoords.x, questPedCoords.y, questPedCoords.z, 0.5, Config.Strings.helpNotification.getMoney)
                 if IsControlJustPressed(0, Config.Keybind) then
                     TriggerServerEvent("lurvorx_delivery:getMoney")
-                    ESX.ShowNotification(Config.Strings.showNotification.questDone, "success", Config.NotificationTime * 1000)
+                    if Config.Framework == "esx" then
+                        ESX.ShowNotification(Config.Strings.showNotification.questDone, "success", Config.NotificationTime * 1000)
+                    elseif Config.Framework == "qb" then
+                        QBCore.Functions.Notify(Config.Strings.showNotification.questDone, "success", Config.NotificationTime * 1000)
+                    end
                     DeleteVehicle(questCar)
                     inActiveQuest = false
                     hasDeliverAllPackages = false
                 end
             end
-            Citizen.Wait(10)
+            Citizen.Wait(0)
         end
     end
 end)
+
+-- FUNCTIONS --
+function Draw3DText(x, y, z, scl_factor, text)
+    local onScreen, _x, _y = World3dToScreen2d(x, y, z)
+    local p = GetGameplayCamCoords()
+    local distance = GetDistanceBetweenCoords(p.x, p.y, p.z, x, y, z, 1)
+    local scale = (1 / distance) * 2
+    local fov = (1 / GetGameplayCamFov()) * 100
+    local scale = scale * fov * scl_factor
+    if onScreen then
+        SetTextScale(0.0, scale)
+        SetTextFont(0)
+        SetTextProportional(1)
+        SetTextColour(255, 255, 255, 255)
+        SetTextDropshadow(0, 0, 0, 0, 255)
+        SetTextEdge(2, 0, 0, 0, 150)
+        SetTextDropShadow()
+        SetTextOutline()
+        SetTextEntry("STRING")
+        SetTextCentre(1)
+        AddTextComponentString(text)
+        DrawText(_x, _y)
+    end
+end

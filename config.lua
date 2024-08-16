@@ -1,7 +1,14 @@
 Config = {}
 
+-- Your framework you are gonna use.
+-- Options: esx, qb
+Config.Framework = "esx"
+
 -- Your discord webhook, for the delivery logs.
-Config.Webhook = ""
+Config.Webhook = {
+    useWebhook = true,
+    webhook = ""
+}
 
 -- The amount the player will get after delivering all the packages.
 Config.PayMoney = 2000
@@ -79,10 +86,10 @@ Config.Strings = {
 
     -- The top-right helo notification.
     helpNotification = {
-        startQuest = "~INPUT_CONTEXT~ To help Karen delivering the packages",
+        startQuest = "~g~[E]~w~ To help Karen delivering the packages",
         deliverAll = "Deliver all the packages",
-        deliverPackage = "~INPUT_CONTEXT~ To deliver the package",
-        getMoney = "~INPUT_CONTEXT~ To get your money"
+        deliverPackage = "~g~[E]~w~ To deliver the package",
+        getMoney = "~g~[E]~w~ To get your money"
     },
 
     -- The notifications.

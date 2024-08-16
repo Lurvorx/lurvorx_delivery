@@ -13,6 +13,6 @@ Watch it here: [Preview - COMING SOON!]()
 
 **Framework compatible:**
 - ESX Legacy
-- More frameworks are coming soon.
+- QB-Core
 
 **Well, I hope you liked it. Please make a review on it if you liked it or hated it in our discord :))**

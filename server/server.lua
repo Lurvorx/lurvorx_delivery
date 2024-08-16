@@ -1,30 +1,43 @@
-ESX = nil
-ESX = exports["es_extended"]:getSharedObject()
+if Config.Framework == "esx" then
+    ESX = exports["es_extended"]:getSharedObject()
+elseif Config.Framework == "qb" then
+    QBCore = exports["qb-core"]:GetCoreObject()
+end
 
-SendToDiscord = function(playerName, discordMessage)
-    local embeds = {
-        {
-            ['type'] = 'rich',
-            ['title'] = '`📦` DELIVERY LOGS',
-            ['description'] = discordMessage,
-            ['color'] = 10092339,
-            ['footer'] = {
-                ['text'] = 'Lurvorx Scripts Logs | ' .. os.date(),
-                ['icon_url'] = 'https://cdn.discordapp.com/attachments/1185300625320329296/1185630929847337000/Lurvorx-Scripts-Logga.jpg?ex=6675b4d9&is=66746359&hm=154e4c80ac278286f9b24f7e1b832fe2afcddad8d4801c62e7656d4b1a79da55&'
+if Config.Webhook.useWebhook then
+    SendToDiscord = function(playerName, discordMessage)
+        local embeds = {
+            {
+                ['type'] = 'rich',
+                ['title'] = '`📦` DELIVERY LOGS',
+                ['description'] = discordMessage,
+                ['color'] = 10092339,
+                ['footer'] = {
+                    ['text'] = 'Lurvorx Scripts Logs | ' .. os.date(),
+                    ['icon_url'] = 'https://cdn.discordapp.com/attachments/1185300625320329296/1185630929847337000/Lurvorx-Scripts-Logga.jpg?ex=6675b4d9&is=66746359&hm=154e4c80ac278286f9b24f7e1b832fe2afcddad8d4801c62e7656d4b1a79da55&'
+                }
             }
         }
-    }
 
-    PerformHttpRequest(Config.Webhook, function(err, text, headers) end, 'POST', json.encode({ embeds = embeds}), { ['Content-Type'] = 'application/json' })
+        PerformHttpRequest(Config.Webhook.webhook, function(err, text, headers) end, 'POST', json.encode({ embeds = embeds}), { ['Content-Type'] = 'application/json' })
+    end
 end
 
 RegisterNetEvent("lurvorx_delivery:getMoney")
 AddEventHandler("lurvorx_delivery:getMoney", function()
     local _source = source
-    local xPlayer = ESX.GetPlayerFromId(_source)
+    if Config.Framework == "esx" then
+        local xPlayer = ESX.GetPlayerFromId(_source)
+    elseif Config.Framework == "qb" then
+        Player = QBCore.Functions.GetPlayer(_source)
+    end
     local playerName = GetPlayerName(_source)
 
-    xPlayer.addMoney(Config.PayMoney)
+    if Config.Framework == "esx" then
+        xPlayer.addMoney(Config.PayMoney)
+    elseif Config.Framework == "qb" then
+        Player.Functions.AddMoney('cash', Config.PayMoney)
+    end
 
     for k,v in pairs(GetPlayerIdentifiers(source)) do
         if string.sub(v, 1, string.len("steam:")) == "steam:" then

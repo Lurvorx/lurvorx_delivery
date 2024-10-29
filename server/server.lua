@@ -26,11 +26,13 @@ end
 RegisterNetEvent("lurvorx_delivery:getMoney")
 AddEventHandler("lurvorx_delivery:getMoney", function()
     local _source = source
+
     if Config.Framework == "esx" then
-        local xPlayer = ESX.GetPlayerFromId(_source)
+        xPlayer = ESX.GetPlayerFromId(_source)
     elseif Config.Framework == "qb" then
         Player = QBCore.Functions.GetPlayer(_source)
     end
+
     local playerName = GetPlayerName(_source)
 
     if Config.Framework == "esx" then

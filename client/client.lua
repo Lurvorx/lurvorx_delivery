@@ -82,6 +82,9 @@ Citizen.CreateThread(function()
                     if Config.Framework == "qb" then
                         TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(questCar))
                     end
+                    if GetResourceState("zyke_garages") ~= "missing" then
+                        exports["zyke_garages"]:GiveTempKeys(questCar)
+                    end
                     SetNewWaypoint(deliverPackageOne.x, deliverPackageOne.y)
                     inActiveQuest = true
                     hasDeliverPackageOne = false
@@ -220,6 +223,10 @@ Citizen.CreateThread(function()
                         ESX.ShowNotification(Config.Strings.showNotification.questDone, "success", Config.NotificationTime * 1000)
                     elseif Config.Framework == "qb" then
                         QBCore.Functions.Notify(Config.Strings.showNotification.questDone, "success", Config.NotificationTime * 1000)
+                    end
+                    if GetResourceState("zyke_garages") ~= "missing" then
+                        vin = exports["zyke_garages"]:GetVinFromVehicle(questCar, copy, false)
+                        exports["zyke_garages"]:RemoveAsPersistent(vin)
                     end
                     DeleteVehicle(questCar)
                     inActiveQuest = false

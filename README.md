@@ -15,4 +15,8 @@ Watch it here: [Preview - COMING SOON!]()
 - ESX Legacy
 - QB-Core
 
+**Updates:**
+- Is now compatible with zyke_garages.
+- Logs now works on the ESX framework.
+
 **Well, I hope you liked it. Please make a review on it if you liked it or hated it in our discord :))**

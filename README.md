@@ -9,7 +9,7 @@ Support is available for all of our scripts, just join our discord server, open 
 Join our discord today: [Lurvorx Scripts](https://discord.gg/jJnE7yTYZW)
 
 If you wanna see the preview before you download the beautiful script, check our video.
-Watch it here: [Preview - COMING SOON!]()
+Watch it here: [Preview](https://youtu.be/rAB68Kdc0f8)
 
 **Framework compatible:**
 - ESX Legacy

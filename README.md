@@ -6,7 +6,7 @@ Is an easy quest. You talk to the quest ped to start the quest. Drive to all you
 
 Support is available for all of our scripts, just join our discord server, open a ticket and someone from the support team will assist you. If you have any suggestions, please join our discord server and make a suggestion in the suggestion channel.
 
-Join our discord today: [Lurvorx Scripts](https://discord.gg/jJnE7yTYZW)
+Join our discord today: [Lurvorx Scripts](https://discord.gg/Tzzsh8zVyQ)
 
 If you wanna see the preview before you download the beautiful script, check our video.
 Watch it here: [Preview](https://youtu.be/rAB68Kdc0f8)

@@ -19,4 +19,6 @@ Watch it here: [Preview](https://youtu.be/rAB68Kdc0f8)
 - Is now compatible with zyke_garages.
 - Logs now works on the ESX framework.
 
-**Well, I hope you liked it. Please make a review on it if you liked it or hated it in our discord :))**
+**Well, I hope you liked it. Please make a review on it if you liked it or hated it in our discord :))**     
+
+**I TESTED THE CLAUDE WEB CODE, THE SCRIPTS HAS BEEN UPDATED USING CLAUDE AI, MAYBE WORKS, MAYBE NOT**
